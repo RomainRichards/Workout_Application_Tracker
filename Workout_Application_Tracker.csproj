@@ -67,6 +67,7 @@
     <Compile Include="Ab.cs">
       <DependentUpon>WorkoutDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CRUD.cs" />
     <Compile Include="LowerBody.cs">
       <DependentUpon>WorkoutDataModel.tt</DependentUpon>
     </Compile>
