@@ -5,21 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Workout_Application_Tracker"
         mc:Ignorable="d"
-        Title="Workout Programs" Height="500" Width="900">
+        Title="Workout Programs" Height="500" Width="1075">
     <Grid>
-        <ListView Grid.Row="1" ItemsSource="{Binding LstWorkoutTable}">
+        <ListView Grid.Row="0" ItemsSource="{Binding LstWorkoutTable}">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Header="Upper Body" DisplayMemberBinding="{Binding UpperBodyID}"/>
-                        <GridViewColumn Header="Sets / Reps" DisplayMemberBinding="{Binding Sets___Reps1}"/>
-                        <GridViewColumn Header="Weight (lbs)" DisplayMemberBinding="{Binding Weight1}"/>
-                        <GridViewColumn Header="Lower Body" DisplayMemberBinding="{Binding LowerBodyID}"/>
-                        <GridViewColumn Header="Sets / Reps" DisplayMemberBinding="{Binding Sets___Reps2}"/>
-                        <GridViewColumn Header="Weight (lbs)" DisplayMemberBinding="{Binding Weight3}"/>
-                        <GridViewColumn Header="Abs" DisplayMemberBinding="{Binding AbsID}"/>
-                        <GridViewColumn Header="Weight (lbs)" DisplayMemberBinding="{Binding Weight_3}"/>
-                        <GridViewColumn Header="Sets / Reps" DisplayMemberBinding="{Binding Sets___Reps_3}"/>
+                        <GridViewColumn Header="Upper Body" Width="100" DisplayMemberBinding="{Binding UpperBodyID}"/>
+                        <GridViewColumn Header="Sets / Reps" Width="100" DisplayMemberBinding="{Binding Sets___Reps1}"/>
+                        <GridViewColumn Header="Weight (lbs)" Width="100" DisplayMemberBinding="{Binding Weight1}"/>
+                        <GridViewColumn Header="Lower Body" Width="100" DisplayMemberBinding="{Binding LowerBodyID}"/>
+                        <GridViewColumn Header="Sets / Reps" Width="100" DisplayMemberBinding="{Binding Sets___Reps2}"/>
+                        <GridViewColumn Header="Weight (lbs)" Width="100" DisplayMemberBinding="{Binding Weight3}"/>
+                        <GridViewColumn Header="Abs" Width="100" DisplayMemberBinding="{Binding AbsID}"/>
+                        <GridViewColumn Header="Weight (lbs)" Width="100" DisplayMemberBinding="{Binding Weight_3}"/>
+                        <GridViewColumn Header="Sets / Reps" Width="100" DisplayMemberBinding="{Binding Sets___Reps_3}"/>
+                        <GridViewColumn Header="Action" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" Margin="4">
+                                        <Button Name="BtnUpdate" Content="Upadate" Width="50" Height="25" Margin="10,0,0,0"/>
+                                        <Button Name="BtnDelete" Content="Delete" Width="50" Height="25" Margin="10,0,0,0"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
