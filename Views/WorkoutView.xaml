@@ -1,25 +1,25 @@
-﻿<Window x:Class="Workout_Application_Tracker.MainWindow"
+﻿<Window x:Class="Workout_Application_Tracker.WorkoutView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Workout_Application_Tracker"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="800">
-    <Grid Background="#FF174F80">
-        <ListView Grid.ColumnSpan="4">
+        Title="Workout Programs" Height="500" Width="900">
+    <Grid>
+        <ListView Grid.Row="1" ItemsSource="{Binding LstWorkoutTable}">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
                         <GridViewColumn Header="Upper Body" DisplayMemberBinding="{Binding UpperBodyID}"/>
                         <GridViewColumn Header="Sets / Reps" DisplayMemberBinding="{Binding Sets___Reps1}"/>
-                        <GridViewColumn Header="Weight" DisplayMemberBinding="{Binding Weight1}"/>
+                        <GridViewColumn Header="Weight (lbs)" DisplayMemberBinding="{Binding Weight1}"/>
                         <GridViewColumn Header="Lower Body" DisplayMemberBinding="{Binding LowerBodyID}"/>
                         <GridViewColumn Header="Sets / Reps" DisplayMemberBinding="{Binding Sets___Reps2}"/>
-                        <GridViewColumn Header="Weight" DisplayMemberBinding="{Binding Weight2}"/>
+                        <GridViewColumn Header="Weight (lbs)" DisplayMemberBinding="{Binding Weight3}"/>
                         <GridViewColumn Header="Abs" DisplayMemberBinding="{Binding AbsID}"/>
-                        <GridViewColumn Header="Weight" DisplayMemberBinding="{Binding Sets___Reps3}"/>
-                        <GridViewColumn Header="Sets / Reps" DisplayMemberBinding="{Binding Weight3}"/>
+                        <GridViewColumn Header="Weight (lbs)" DisplayMemberBinding="{Binding Weight_3}"/>
+                        <GridViewColumn Header="Sets / Reps" DisplayMemberBinding="{Binding Sets___Reps_3}"/>
                     </GridView.Columns>
                 </GridView>
             </ListView.View>

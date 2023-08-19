@@ -11,22 +11,96 @@ namespace Workout_Application_Tracker
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class WorkoutTable
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
+    using System.Windows.Controls;
+
+    public partial class WorkoutTable : INotifyPropertyChanged 
     {
-        public decimal WorkoutID { get; set; }
-        public Nullable<decimal> UpperBodyID { get; set; }
-        public string Sets___Reps1 { get; set; }
-        public decimal Weight1 { get; set; }
-        public Nullable<decimal> LowerBodyID { get; set; }
-        public string Sets___Reps2 { get; set; }
-        public decimal Weight2 { get; set; }
-        public Nullable<decimal> AbsID { get; set; }
-        public string Sets___Reps_3 { get; set; }
-        public Nullable<decimal> Weight_3 { get; set; }
+        private decimal workoutID;
+        private Nullable<decimal> upperbodyID;
+        private string setsreps1;
+        private decimal weight1;
+
+        private Nullable<decimal> lowerbodyID;
+        private string setsreps2;
+        private decimal weight2;
+
+        private Nullable<decimal> absID;
+        private string setsreps3;
+        private Nullable<decimal> weight3;
+
+
+        public decimal WorkoutID { get => workoutID; set {
+                workoutID = value;
+                OnPropertyChanged(nameof(WorkoutID));
+            } 
+        }
+        public Nullable<decimal> UpperBodyID { get => upperbodyID; set
+            {
+                upperbodyID = value;
+                OnPropertyChanged(nameof(UpperBodyID));
+            }
+        }
+        public string Sets___Reps1 { get => setsreps1; set
+            {
+                setsreps1 = value;
+                OnPropertyChanged(nameof(Sets___Reps1));
+            }
+        }
+        public decimal Weight1 { get => weight1; set
+            {
+                weight1 = value;
+                OnPropertyChanged(nameof(Weight1));
+            }
+        }
+        public Nullable<decimal> LowerBodyID { get => lowerbodyID; set
+            {
+                lowerbodyID = value;
+                OnPropertyChanged(nameof(LowerBodyID));
+            }
+        }
+        public string Sets___Reps2 { get => setsreps2; set
+            {
+                setsreps2 = value;
+                OnPropertyChanged(nameof(Sets___Reps2));
+            }
+        }
+        public decimal Weight2 { get => weight2; set
+            {
+                weight2 = value;
+                OnPropertyChanged(nameof(Weight2));
+            }
+        }
+        public Nullable<decimal> AbsID { get => absID; set
+            {
+                absID = value;
+                OnPropertyChanged(nameof(AbsID));
+            }
+        }
+        public string Sets___Reps_3 { get => setsreps3; set
+            {
+                setsreps3 = value;
+                OnPropertyChanged(nameof(Sets___Reps_3));
+            }
+        }
+        public Nullable<decimal> Weight_3 { get => weight3; set
+            {
+                weight3 = value;
+                OnPropertyChanged(nameof(Weight_3));
+            }
+        }
     
         public virtual Ab Ab { get; set; }
         public virtual LowerBody LowerBody { get; set; }
         public virtual UpperBody UpperBody { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }
+
+
