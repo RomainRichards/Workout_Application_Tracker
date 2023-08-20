@@ -1,0 +1,130 @@
+﻿<Window x:Class="Workout_Application_Tracker.Views.UpdateView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Workout_Application_Tracker.Views"
+        mc:Ignorable="d"
+        Title="Update Program" Height="450" Width="500">
+    <Grid Grid.Row="1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" BorderBrush="Black" BorderThickness="1" Margin="5">
+            <StackPanel Margin="5"/>
+        </Border>
+
+        <Border Grid.Column="0" BorderBrush="Black" BorderThickness="1" Margin="5">
+            <StackPanel Margin="5">
+                <Label Content="Update Workout" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                <Grid Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="Upper Body"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding SelectedWorkout.UpperBodyID}"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="Sets / Reps"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedWorkout.Sets___Reps1}"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="Weight (lbs)"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedWorkout.Weight1}"/>
+
+                    <Label Grid.Row="3" Grid.Column="0" Content="Lower Body"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding SelectedWorkout.LowerBodyID}"/>
+
+                    <Label Grid.Row="4" Grid.Column="0" Content="Sets / Reps"/>
+                    <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding SelectedWorkout.Sets___Reps2}"/>
+
+                    <Label Grid.Row="5" Grid.Column="0" Content="Weight (lbs)"/>
+                    <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding SelectedWorkout.Weight2}"/>
+
+                    <Label Grid.Row="6" Grid.Column="0" Content="Abs"/>
+                    <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding SelectedWorkout.AbsID}"/>
+
+                    <Label Grid.Row="7" Grid.Column="0" Content="Sets / Reps"/>
+                    <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding SelectedWorkout.Sets___Reps_3}"/>
+
+                    <Label Grid.Row="8" Grid.Column="0" Content="Weight (lbs)"/>
+                    <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding SelectedWorkout.Weight_3}"/>
+
+
+
+
+                </Grid>
+            </StackPanel>
+        </Border>
+        
+        <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="5">
+            <StackPanel Margin="5">
+                <Label Content="Add Workout" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                <Grid Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="Upper Body"/>
+                    <TextBox Grid.Row="0" Grid.Column="1"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="Sets / Reps"/>
+                    <TextBox Grid.Row="1" Grid.Column="1"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="Weight (lbs)"/>
+                    <TextBox Grid.Row="2" Grid.Column="1"/>
+
+                    <Label Grid.Row="3" Grid.Column="0" Content="Lower Body"/>
+                    <TextBox Grid.Row="3" Grid.Column="1"/>
+
+                    <Label Grid.Row="4" Grid.Column="0" Content="Sets / Reps"/>
+                    <TextBox Grid.Row="4" Grid.Column="1"/>
+
+                    <Label Grid.Row="5" Grid.Column="0" Content="Weight (lbs)"/>
+                    <TextBox Grid.Row="5" Grid.Column="1"/>
+
+                    <Label Grid.Row="6" Grid.Column="0" Content="Abs"/>
+                    <TextBox Grid.Row="6" Grid.Column="1"/>
+
+                    <Label Grid.Row="7" Grid.Column="0" Content="Sets / Reps"/>
+                    <TextBox Grid.Row="7" Grid.Column="1"/>
+
+                    <Label Grid.Row="8" Grid.Column="0" Content="Weight (lbs)"/>
+                    <TextBox Grid.Row="8" Grid.Column="1"/>
+
+
+                </Grid>
+            </StackPanel>
+        </Border>
+        
+    </Grid>
+</Window>
