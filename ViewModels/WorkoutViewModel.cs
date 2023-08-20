@@ -57,11 +57,7 @@ namespace Workout_Application_Tracker.ViewModels
             }
         }
 
-        public void OpenUpdate()
-        {
-            UpdateView op = new UpdateView();
-            op.Show();
-        }
+ 
 
         FitnessDBEntities fitnessDBEntities;
         public WorkoutViewModel()

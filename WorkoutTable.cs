@@ -90,7 +90,7 @@ namespace Workout_Application_Tracker
                 OnPropertyChanged(nameof(Weight_3));
             }
         }
-    
+        
         public virtual Ab Ab { get; set; }
         public virtual LowerBody LowerBody { get; set; }
         public virtual UpperBody UpperBody { get; set; }

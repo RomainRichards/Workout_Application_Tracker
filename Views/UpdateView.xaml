@@ -39,31 +39,31 @@
                     </Grid.RowDefinitions>
 
                     <Label Grid.Row="0" Grid.Column="0" Content="Upper Body"/>
-                    <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding SelectedWorkout.UpperBodyID}"/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Margin="3" Text="{Binding SelectedWorkout.UpperBodyID}"/>
 
                     <Label Grid.Row="1" Grid.Column="0" Content="Sets / Reps"/>
-                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedWorkout.Sets___Reps1}"/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding SelectedWorkout.Sets___Reps1}"/>
 
                     <Label Grid.Row="2" Grid.Column="0" Content="Weight (lbs)"/>
-                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedWorkout.Weight1}"/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Margin="3" Text="{Binding SelectedWorkout.Weight1}"/>
 
                     <Label Grid.Row="3" Grid.Column="0" Content="Lower Body"/>
-                    <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding SelectedWorkout.LowerBodyID}"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" Margin="3" Text="{Binding SelectedWorkout.LowerBodyID}"/>
 
                     <Label Grid.Row="4" Grid.Column="0" Content="Sets / Reps"/>
-                    <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding SelectedWorkout.Sets___Reps2}"/>
+                    <TextBox Grid.Row="4" Grid.Column="1" Margin="3" Text="{Binding SelectedWorkout.Sets___Reps2}"/>
 
                     <Label Grid.Row="5" Grid.Column="0" Content="Weight (lbs)"/>
-                    <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding SelectedWorkout.Weight2}"/>
+                    <TextBox Grid.Row="5" Grid.Column="1" Margin="3" Text="{Binding SelectedWorkout.Weight2}"/>
 
                     <Label Grid.Row="6" Grid.Column="0" Content="Abs"/>
-                    <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding SelectedWorkout.AbsID}"/>
+                    <TextBox Grid.Row="6" Grid.Column="1" Margin="3" Text="{Binding SelectedWorkout.AbsID}"/>
 
                     <Label Grid.Row="7" Grid.Column="0" Content="Sets / Reps"/>
-                    <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding SelectedWorkout.Sets___Reps_3}"/>
+                    <TextBox Grid.Row="7" Grid.Column="1" Margin="3" Text="{Binding SelectedWorkout.Sets___Reps_3}"/>
 
                     <Label Grid.Row="8" Grid.Column="0" Content="Weight (lbs)"/>
-                    <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding SelectedWorkout.Weight_3}"/>
+                    <TextBox Grid.Row="8" Grid.Column="1" Margin="3" Text="{Binding SelectedWorkout.Weight_3}"/>
 
 
 
