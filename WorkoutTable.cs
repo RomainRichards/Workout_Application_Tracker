@@ -13,9 +13,10 @@ namespace Workout_Application_Tracker
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
+    using System.Web;
     using System.Windows.Controls;
 
-    public partial class WorkoutTable : INotifyPropertyChanged 
+    public partial class WorkoutTable : INotifyPropertyChanged
     {
         private decimal workoutID;
         private Nullable<decimal> upperbodyID;
@@ -34,7 +35,7 @@ namespace Workout_Application_Tracker
         public decimal WorkoutID { get => workoutID; set {
                 workoutID = value;
                 OnPropertyChanged(nameof(WorkoutID));
-            } 
+            }
         }
         public Nullable<decimal> UpperBodyID { get => upperbodyID; set
             {
@@ -90,7 +91,7 @@ namespace Workout_Application_Tracker
                 OnPropertyChanged(nameof(Weight_3));
             }
         }
-        
+
         public virtual Ab Ab { get; set; }
         public virtual LowerBody LowerBody { get; set; }
         public virtual UpperBody UpperBody { get; set; }

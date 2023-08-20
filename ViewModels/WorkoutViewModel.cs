@@ -6,6 +6,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Entity.Core.Common.CommandTrees;
+using System.Data.Entity.Migrations;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -57,6 +58,17 @@ namespace Workout_Application_Tracker.ViewModels
             }
         }
 
+        // Get combobox data.
+        private ObservableCollection<Ab> _locations;
+        public ObservableCollection<Ab> Locations
+        {
+            get { return _locations; }
+            set
+            {
+                _locations = value;
+                OnPropertyChanged(nameof(Locations));
+            }
+        }
  
 
         FitnessDBEntities fitnessDBEntities;
@@ -65,6 +77,26 @@ namespace Workout_Application_Tracker.ViewModels
             fitnessDBEntities = new FitnessDBEntities();
             LoadFitness();
             DeleteCommand = new Command((s) => true, Delete);
+            UpdateCommand = new Command((s) => true, Update);
+            UpdateWorkoutCommand = new Command((s) => true, UpdateWorkout);
+            LoadAbs();
+            //Locations = new ObservableCollection<string>();
+        }
+
+        private void LoadAbs()
+        {
+            Locations = new ObservableCollection<Ab>(fitnessDBEntities.Abs);
+        }
+
+        private void UpdateWorkout(object obj)
+        {
+            fitnessDBEntities.SaveChanges();
+        }
+
+        private void Update(object obj)
+        {
+            SelectedWorkout = obj as WorkoutTable;
+
         }
 
         private void Delete(object obj)
@@ -80,6 +112,8 @@ namespace Workout_Application_Tracker.ViewModels
             LstWorkoutTable = new ObservableCollection<WorkoutTable>(fitnessDBEntities.WorkoutTables);
         }
         public ICommand DeleteCommand { get; set; }
+        public ICommand UpdateCommand { get; set; }
+        public ICommand UpdateWorkoutCommand { get; set; }
     }
 
     internal class Command : ICommand
