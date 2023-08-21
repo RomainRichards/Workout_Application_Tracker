@@ -15,17 +15,17 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <ListView ItemsSource="{Binding LstWorkoutTable}" SelectedItem="{Binding SelectedWorkout}" Grid.ColumnSpan="2">
+        <ListView ItemsSource="{Binding LstWorkoutTable}" SelectedItem="{Binding SelectedWorkout}" Grid.ColumnSpan="2" HorizontalAlignment="Center">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Header="Workout 1" Width="100" DisplayMemberBinding="{Binding UpperBodyID}"/>
+                        <GridViewColumn Header="Workout 1" Width="100" DisplayMemberBinding="{Binding UpperBody1}"/>
                         <GridViewColumn Header="Sets / Reps" Width="100" DisplayMemberBinding="{Binding Sets___Reps1}"/>
                         <GridViewColumn Header="Weight (lbs)" Width="80" DisplayMemberBinding="{Binding Weight1}"/>
-                        <GridViewColumn Header="Workout 2" Width="100" DisplayMemberBinding="{Binding LowerBodyID}"/>
+                        <GridViewColumn Header="Workout 2" Width="100" DisplayMemberBinding="{Binding LowerBody1}"/>
                         <GridViewColumn Header="Sets / Reps" Width="100" DisplayMemberBinding="{Binding Sets___Reps2}"/>
                         <GridViewColumn Header="Weight (lbs)" Width="80" DisplayMemberBinding="{Binding Weight2}"/>
-                        <GridViewColumn Header="Workout 3" Width="60" DisplayMemberBinding="{Binding AbsID}"/>
+                        <GridViewColumn Header="Workout 3" Width="60" DisplayMemberBinding="{Binding Abs}"/>
                         <GridViewColumn Header="Sets / Reps" Width="100" DisplayMemberBinding="{Binding Sets___Reps_3}"/>
                         <GridViewColumn Header="Weight (lbs)" Width="80" DisplayMemberBinding="{Binding Weight_3}"/>
                         <GridViewColumn Header="Action" >
@@ -84,7 +84,7 @@
                         <ComboBox 
                             Grid.Row="0"
                             Grid.Column="1"
-                            ItemsSource="{Binding UpperBodyCollection,Mode=TwoWay}"
+                            ItemsSource="{Binding UpperBodyCollection,Mode=OneTime}"
                             HorizontalContentAlignment="Center"
                             Margin="3"
                             DisplayMemberPath="UpperBody1"/>
@@ -153,7 +153,13 @@
                         </Grid.RowDefinitions>
 
                         <Label Grid.Row="0" Grid.Column="0" Content="Workout 1"/>
-                        <TextBox Grid.Row="0" Grid.Column="1" Margin="3" Text="{Binding SelectedWorkout.UpperBodyID}"/>
+                        <ComboBox 
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            ItemsSource="{Binding UpperBodyCollection,Mode=OneWay}"
+                            HorizontalContentAlignment="Center"
+                            Margin="3"
+                            DisplayMemberPath="UpperBody1"/>
 
                         <Label Grid.Row="1" Grid.Column="0" Content="Sets / Reps"/>
                         <TextBox Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding SelectedWorkout.Sets___Reps1}"/>
@@ -162,8 +168,14 @@
                         <TextBox Grid.Row="2" Grid.Column="1" Margin="3" Text="{Binding SelectedWorkout.Weight1}"/>
 
                         <Label Grid.Row="3" Grid.Column="0" Content="Workout 2"/>
-                        <TextBox Grid.Row="3" Grid.Column="1" Margin="3" Text="{Binding SelectedWorkout.LowerBodyID}"/>
-
+                        <ComboBox 
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            ItemsSource="{Binding LowerBodyCollection,Mode=OneWay}"
+                            HorizontalContentAlignment="Center"
+                            Margin="3"
+                            DisplayMemberPath="LowerBody1"/>
+                        
                         <Label Grid.Row="4" Grid.Column="0" Content="Sets / Reps"/>
                         <TextBox Grid.Row="4" Grid.Column="1" Margin="3" Text="{Binding SelectedWorkout.Sets___Reps2}"/>
 
@@ -171,7 +183,13 @@
                         <TextBox Grid.Row="5" Grid.Column="1" Margin="3" Text="{Binding SelectedWorkout.Weight2}"/>
 
                         <Label Grid.Row="6" Grid.Column="0" Content="Workout 3"/>
-                        <TextBox Grid.Row="6" Grid.Column="1" Margin="3" Text="{Binding SelectedWorkout.AbsID}"/>
+                        <ComboBox 
+                            Grid.Row="6"
+                            Grid.Column="1"
+                            ItemsSource="{Binding AbCollection,Mode=OneWay}"
+                            HorizontalContentAlignment="Center"
+                            Margin="3"
+                            DisplayMemberPath="Abs"/>
 
                         <Label Grid.Row="7" Grid.Column="0" Content="Sets / Reps"/>
                         <TextBox Grid.Row="7" Grid.Column="1" Margin="3" Text="{Binding SelectedWorkout.Sets___Reps_3}"/>

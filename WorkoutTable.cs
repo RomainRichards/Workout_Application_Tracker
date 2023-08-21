@@ -12,6 +12,7 @@ namespace Workout_Application_Tracker
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.Linq;
     using System.Runtime.CompilerServices;
     using System.Web;
     using System.Windows.Controls;
@@ -38,17 +39,25 @@ namespace Workout_Application_Tracker
                 OnPropertyChanged(nameof(WorkoutID));
             }
         }
-        public Nullable<decimal> UpperBodyID { get => upperbodyID; set
+        public Nullable<decimal> UpperBodyID
+        { 
+            get => upperbodyID;
+            set
             {
-                foreach (var item in dBEntities.UpperBodies)
-                {
-                    if(item.UpperBodyID == item.UpperBodyID)
-                    {
-                        item.UpperBody1 = item.UpperBody1;
-                    }
-                }
                 upperbodyID = value;
                 OnPropertyChanged(nameof(UpperBodyID));
+
+                if (value.HasValue)
+                {
+                    // Retrieve the corresponding UpperBody item based on UpperBodyID
+                    var correspondingUpperBody = dBEntities.UpperBodies.FirstOrDefault(ub => ub.UpperBodyID == value);
+
+                    if (correspondingUpperBody != null)
+                    {
+                        // Set UpperBody1 based on the retrieved item
+                        UpperBody1 = correspondingUpperBody.UpperBody1;
+                    }
+                }
             }
         }
         public string Sets___Reps1 { get => setsreps1; set
@@ -67,6 +76,18 @@ namespace Workout_Application_Tracker
             {
                 lowerbodyID = value;
                 OnPropertyChanged(nameof(LowerBodyID));
+
+                if (value.HasValue)
+                {
+                    // Retrieve the corresponding LowerBody item based on LowerBodyID
+                    var correspondingLowerBody = dBEntities.LowerBodies.FirstOrDefault(ub => ub.LowerBodyID == value);
+
+                    if (correspondingLowerBody != null)
+                    {
+                        // Set LowerBody1 based on the retrieved item
+                        LowerBody1 = correspondingLowerBody.LowerBody1;
+                    }
+                }
             }
         }
         public string Sets___Reps2 { get => setsreps2; set
@@ -85,6 +106,18 @@ namespace Workout_Application_Tracker
             {
                 absID = value;
                 OnPropertyChanged(nameof(AbsID));
+
+                if (value.HasValue)
+                {
+                    // Retrieve the corresponding Ab item based on LowerBodyID
+                    var correspondingAbs = dBEntities.Abs.FirstOrDefault(ub => ub.AbsID == value);
+
+                    if (correspondingAbs != null)
+                    {
+                        // Set Abs based on the retrieved item
+                        Abs = correspondingAbs.Abs;
+                    }
+                }
             }
         }
         public string Sets___Reps_3 { get => setsreps3; set
