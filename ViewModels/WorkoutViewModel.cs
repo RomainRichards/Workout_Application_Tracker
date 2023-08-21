@@ -155,8 +155,8 @@ namespace Workout_Application_Tracker.ViewModels
         private void Update(object obj)
         {
             SelectedWorkout = obj as WorkoutTable;
-            SelectedAb = obj as Ab;
-            SelectedUpperBody = obj as ObservableCollection<UpperBody>;
+           // SelectedAb = obj as Ab;
+           // SelectedUpperBody = obj as ObservableCollection<UpperBody>;
         }
 
         private void Delete(object obj)

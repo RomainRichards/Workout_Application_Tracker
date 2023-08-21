@@ -159,8 +159,9 @@
                             Grid.Column="1"
                             HorizontalContentAlignment="Center"
                             Margin="3"
+                            Text="{Binding SelectedWorkout.UpperBody1,Mode=TwoWay}"
                             ItemsSource="{Binding UpperBodyCollection}"
-                            SelectedItem="{Binding SelectedWorkout.UpperBodyID}"
+                            SelectedItem="{Binding SelectedWorkout.UpperBody1,Mode=TwoWay}"
                             DisplayMemberPath="UpperBody1"
                             SelectedValuePath="UpperBodyID"/>
 
@@ -174,7 +175,9 @@
                         <ComboBox 
                             Grid.Row="3"
                             Grid.Column="1"
-                            ItemsSource="{Binding LowerBodyCollection,Mode=OneWay}"
+                            Text="{Binding SelectedWorkout.LowerBody1,Mode=TwoWay}"
+                            ItemsSource="{Binding LowerBodyCollection}"
+                            SelectedItem="{Binding SelectedWorkout.LowerBody1,Mode=TwoWay}"
                             HorizontalContentAlignment="Center"
                             Margin="3"
                             DisplayMemberPath="LowerBody1"/>
@@ -189,7 +192,9 @@
                         <ComboBox 
                             Grid.Row="6"
                             Grid.Column="1"
-                            ItemsSource="{Binding AbCollection,Mode=OneWay}"
+                            Text="{Binding SelectedWorkout.Abs,Mode=TwoWay}"
+                            ItemsSource="{Binding AbCollection}"
+                            SelectedItem="{Binding SelectedWorkout.Abs,Mode=TwoWay}"
                             HorizontalContentAlignment="Center"
                             Margin="3"
                             DisplayMemberPath="Abs"/>
