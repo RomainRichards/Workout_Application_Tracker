@@ -129,6 +129,7 @@
                 </StackPanel>
             </Border>
 
+            <!--Update workout code start-->            
             <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="5">
                 <StackPanel Margin="5">
                     <Label Content="Update Workout" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -156,10 +157,12 @@
                         <ComboBox 
                             Grid.Row="0"
                             Grid.Column="1"
-                            ItemsSource="{Binding UpperBodyCollection,Mode=OneWay}"
                             HorizontalContentAlignment="Center"
                             Margin="3"
-                            DisplayMemberPath="UpperBody1"/>
+                            ItemsSource="{Binding UpperBodyCollection}"
+                            SelectedItem="{Binding SelectedWorkout.UpperBodyID}"
+                            DisplayMemberPath="UpperBody1"
+                            SelectedValuePath="UpperBodyID"/>
 
                         <Label Grid.Row="1" Grid.Column="0" Content="Sets / Reps"/>
                         <TextBox Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding SelectedWorkout.Sets___Reps1}"/>
@@ -204,6 +207,7 @@
                     </Grid>
                 </StackPanel>
             </Border>
+           <!--Update workout code ends-->
         </Grid>
     </Grid>
 </Window>

@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -58,6 +59,19 @@ namespace Workout_Application_Tracker.ViewModels
             }
         }
 
+        private Ab _selectedAb;
+        public Ab SelectedAb
+        {
+            get { return _selectedAb; }
+            set
+            {
+                _selectedAb = value;
+                OnPropertyChanged(nameof(SelectedAb));
+            }
+        }
+
+
+
         // Get combobox data for ab workouts.
         private ObservableCollection<Ab> _abCollection;
         public ObservableCollection<Ab> AbCollection
@@ -69,6 +83,7 @@ namespace Workout_Application_Tracker.ViewModels
                 OnPropertyChanged(nameof(AbCollection));
             }
         }
+    
 
         private ObservableCollection<LowerBody> _lowerBodyCollection;
         public ObservableCollection<LowerBody> LowerBodyCollection
@@ -89,6 +104,17 @@ namespace Workout_Application_Tracker.ViewModels
             {
                 _upperBodyCollection = value;
                 OnPropertyChanged(nameof(UpperBodyCollection));
+            }
+        }
+
+        private ObservableCollection<UpperBody> _selectedUpperBody;
+        public ObservableCollection<UpperBody> SelectedUpperBody
+        {
+            get { return _selectedUpperBody; }
+            set
+            {
+                _selectedUpperBody = value;
+                OnPropertyChanged(nameof(SelectedUpperBody));
             }
         }
 
@@ -129,7 +155,8 @@ namespace Workout_Application_Tracker.ViewModels
         private void Update(object obj)
         {
             SelectedWorkout = obj as WorkoutTable;
-
+            SelectedAb = obj as Ab;
+            SelectedUpperBody = obj as ObservableCollection<UpperBody>;
         }
 
         private void Delete(object obj)
