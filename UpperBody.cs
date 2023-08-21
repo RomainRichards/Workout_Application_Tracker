@@ -7,12 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Workout_Application_Tracker
+namespace Workout_Application_Tracker 
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class UpperBody
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
+
+    public partial class UpperBody : INotifyPropertyChanged 
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UpperBody()
@@ -20,10 +22,35 @@ namespace Workout_Application_Tracker
             this.WorkoutTables = new HashSet<WorkoutTable>();
         }
     
-        public decimal UpperBodyID { get; set; }
-        public string UpperBody1 { get; set; }
-    
+        private decimal upperBodyID;
+        private string _upperBody;
+
+        public decimal UpperBodyID
+        {
+            get => upperBodyID; set
+            {
+                upperBodyID = value;
+                OnPropertyChanged(nameof(UpperBodyID));
+            }
+        }
+        public string UpperBody1
+        {
+            get => _upperBody; set
+            {
+                _upperBody = value;
+                OnPropertyChanged(nameof(UpperBody1));
+            }
+        }
+
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WorkoutTable> WorkoutTables { get; set; }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

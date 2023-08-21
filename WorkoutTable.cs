@@ -31,6 +31,7 @@ namespace Workout_Application_Tracker
         private string setsreps3;
         private Nullable<decimal> weight3;
 
+        FitnessDBEntities dBEntities = new FitnessDBEntities();
 
         public decimal WorkoutID { get => workoutID; set {
                 workoutID = value;
@@ -39,6 +40,13 @@ namespace Workout_Application_Tracker
         }
         public Nullable<decimal> UpperBodyID { get => upperbodyID; set
             {
+                foreach (var item in dBEntities.UpperBodies)
+                {
+                    if(item.UpperBodyID == item.UpperBodyID)
+                    {
+                        item.UpperBody1 = item.UpperBody1;
+                    }
+                }
                 upperbodyID = value;
                 OnPropertyChanged(nameof(UpperBodyID));
             }
@@ -95,6 +103,7 @@ namespace Workout_Application_Tracker
         public virtual Ab Ab { get; set; }
         public virtual LowerBody LowerBody { get; set; }
         public virtual UpperBody UpperBody { get; set; }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)

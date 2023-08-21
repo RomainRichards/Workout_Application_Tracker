@@ -37,13 +37,13 @@ namespace Workout_Application_Tracker.ViewModels
             }
         }
 
-        private ObservableCollection<WorkoutTable> _1stWorkoutTable;
+        private ObservableCollection<WorkoutTable> _lstWorkoutTable;
         public ObservableCollection<WorkoutTable> LstWorkoutTable
         {
-            get { return _1stWorkoutTable; }
+            get { return _lstWorkoutTable; }
             set
             {
-                _1stWorkoutTable = value;
+                _lstWorkoutTable = value;
                 OnPropertyChanged(nameof(LstWorkoutTable));
             }
         }
@@ -58,36 +58,69 @@ namespace Workout_Application_Tracker.ViewModels
             }
         }
 
-        // Get combobox data.
-        private ObservableCollection<Ab> _locations;
-        public ObservableCollection<Ab> Locations
+        // Get combobox data for ab workouts.
+        private ObservableCollection<Ab> _abCollection;
+        public ObservableCollection<Ab> AbCollection
         {
-            get { return _locations; }
+            get { return _abCollection; }
             set
             {
-                _locations = value;
-                OnPropertyChanged(nameof(Locations));
+                _abCollection = value;
+                OnPropertyChanged(nameof(AbCollection));
             }
         }
- 
+
+        private ObservableCollection<LowerBody> _lowerBodyCollection;
+        public ObservableCollection<LowerBody> LowerBodyCollection
+        {
+            get { return _lowerBodyCollection; }
+            set
+            {
+                _lowerBodyCollection = value;
+                OnPropertyChanged(nameof(LowerBodyCollection));
+            }
+        }
+
+        private ObservableCollection<UpperBody> _upperBodyCollection;
+        public ObservableCollection<UpperBody> UpperBodyCollection
+        {
+            get { return _upperBodyCollection; }
+            set
+            {
+                _upperBodyCollection = value;
+                OnPropertyChanged(nameof(UpperBodyCollection));
+            }
+        }
 
         FitnessDBEntities fitnessDBEntities;
         public WorkoutViewModel()
         {
             fitnessDBEntities = new FitnessDBEntities();
             LoadFitness();
+            LoadAb();
+            LoadLowerBody();
+            LoadUpperBody();
             DeleteCommand = new Command((s) => true, Delete);
             UpdateCommand = new Command((s) => true, Update);
             UpdateWorkoutCommand = new Command((s) => true, UpdateWorkout);
-            LoadAbs();
-            //Locations = new ObservableCollection<string>();
+
         }
 
-        private void LoadAbs()
+        
+
+        private void LoadAb()
         {
-            Locations = new ObservableCollection<Ab>(fitnessDBEntities.Abs);
+            AbCollection = new ObservableCollection<Ab>(fitnessDBEntities.Abs);
         }
 
+        private void LoadLowerBody()
+        {
+            LowerBodyCollection = new ObservableCollection<LowerBody>(fitnessDBEntities.LowerBodies);
+        }
+        private void LoadUpperBody()
+        {
+            UpperBodyCollection = new ObservableCollection<UpperBody>(fitnessDBEntities.UpperBodies);
+        }
         private void UpdateWorkout(object obj)
         {
             fitnessDBEntities.SaveChanges();

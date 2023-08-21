@@ -11,19 +11,40 @@ namespace Workout_Application_Tracker
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class LowerBody
+    using System.ComponentModel;
+    using System.Runtime.CompilerServices;
+
+    public partial class LowerBody : INotifyPropertyChanged
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public LowerBody()
         {
             this.WorkoutTables = new HashSet<WorkoutTable>();
         }
-    
-        public decimal LowerBodyID { get; set; }
-        public string LowerBody1 { get; set; }
-    
+
+        private decimal lowerBodyID;
+        private string _lowerBody;
+
+        public decimal LowerBodyID { get => lowerBodyID; set{
+                lowerBodyID = value;
+                OnPropertyChanged(nameof(LowerBodyID));
+            }
+        }
+        public string LowerBody1 { get => _lowerBody; set {
+                _lowerBody = value;
+                OnPropertyChanged(nameof(LowerBody1));
+            }
+        }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WorkoutTable> WorkoutTables { get; set; }
+
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }
