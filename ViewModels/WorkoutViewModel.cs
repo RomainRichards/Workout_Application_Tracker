@@ -59,17 +59,6 @@ namespace Workout_Application_Tracker.ViewModels
             }
         }
 
-        private Ab _selectedAb;
-        public Ab SelectedAb
-        {
-            get { return _selectedAb; }
-            set
-            {
-                _selectedAb = value;
-                OnPropertyChanged(nameof(SelectedAb));
-            }
-        }
-
 
 
         // Get combobox data for ab workouts.
@@ -106,17 +95,123 @@ namespace Workout_Application_Tracker.ViewModels
                 OnPropertyChanged(nameof(UpperBodyCollection));
             }
         }
-
-        private ObservableCollection<UpperBody> _selectedUpperBody;
-        public ObservableCollection<UpperBody> SelectedUpperBody
+        // Upper Body combobox code
+        //************************************************************************
+        private UpperBody _selectedUpperBody;
+        public UpperBody SelectedUpperBody
         {
             get { return _selectedUpperBody; }
             set
             {
                 _selectedUpperBody = value;
                 OnPropertyChanged(nameof(SelectedUpperBody));
+                UpdateSelectedCategoryText();
             }
         }
+        //************************************************************************
+        private string _selectedCategoryText;
+        public string SelectedCategoryText
+        {
+            get { return _selectedCategoryText; }
+            set
+            {
+                _selectedCategoryText = value;
+                OnPropertyChanged(nameof(SelectedCategoryText));
+            }
+        }
+        //************************************************************************
+        private void UpdateSelectedCategoryText()
+        {
+            if (SelectedUpperBody != null)
+            {
+                SelectedCategoryText = SelectedUpperBody.UpperBody1;
+                SelectedWorkout.UpperBody1 = SelectedCategoryText;
+            }
+            else
+            {
+                SelectedCategoryText = SelectedWorkout.UpperBody1;
+            }
+        }
+
+
+
+
+        // LowerBody combo box code
+        //****************************************************************************
+        private LowerBody _selectedLowerBody;
+        public LowerBody SelectedLowerBody
+        {
+            get { return _selectedLowerBody; }
+            set
+            {
+                _selectedLowerBody = value;
+                OnPropertyChanged(nameof(SelectedLowerBody));
+                UpdateSelectedCategoryText1();
+            }
+        }
+        //****************************************************************************
+        private string _selectedCategoryText1;
+        public string SelectedCategoryText1
+        {
+            get { return _selectedCategoryText1; }
+            set
+            {
+                _selectedCategoryText1 = value;
+                OnPropertyChanged(nameof(SelectedCategoryText1));
+            }
+        }
+        //****************************************************************************
+        private void UpdateSelectedCategoryText1()
+        {
+            if (SelectedLowerBody != null)
+            {
+                SelectedCategoryText1 = SelectedLowerBody.LowerBody1;
+            }
+            else
+            {
+                SelectedCategoryText1 = SelectedWorkout.LowerBody1;
+            }
+        }
+
+        // Ab combo box code
+        //****************************************************************************
+        private Ab _selectedAb;
+        public Ab SelectedAb
+        {
+            get { return _selectedAb; }
+            set
+            {
+                _selectedAb = value;
+                OnPropertyChanged(nameof(SelectedAb));
+                UpdateSelectedCategoryText2();
+            }
+        }
+        //****************************************************************************
+        private string _selectedCategoryText2;
+        public string SelectedCategoryText2
+        {
+            get { return _selectedCategoryText2; }
+            set
+            {
+                _selectedCategoryText2 = value;
+                OnPropertyChanged(nameof(SelectedCategoryText2));
+            }
+        }
+        //****************************************************************************
+        private void UpdateSelectedCategoryText2()
+        {
+            if (SelectedAb != null)
+            {
+                SelectedCategoryText2 = SelectedAb.Abs;
+            }
+            else
+            {
+                SelectedCategoryText2 = SelectedWorkout.Abs;
+            }
+        }
+
+
+        public ObservableCollection<UpperBody> Categories { get; set; }
 
         FitnessDBEntities fitnessDBEntities;
         public WorkoutViewModel()
@@ -130,6 +225,15 @@ namespace Workout_Application_Tracker.ViewModels
             UpdateCommand = new Command((s) => true, Update);
             UpdateWorkoutCommand = new Command((s) => true, UpdateWorkout);
 
+
+            Categories = new ObservableCollection<UpperBody>
+            {
+                new UpperBody { UpperBody1 = "Bench Press" },
+                new UpperBody { UpperBody1 = "Bicept Curl" },
+                new UpperBody { UpperBody1 = "Tricept Press Down" },
+                new UpperBody { UpperBody1 = "Shoulder Press" },
+                new UpperBody { UpperBody1 = "Forearm Curl" }
+            };
         }
 
         
@@ -155,9 +259,11 @@ namespace Workout_Application_Tracker.ViewModels
         private void Update(object obj)
         {
             SelectedWorkout = obj as WorkoutTable;
-           // SelectedAb = obj as Ab;
-           // SelectedUpperBody = obj as ObservableCollection<UpperBody>;
+            SelectedUpperBody = obj as UpperBody;
+            SelectedLowerBody = obj as LowerBody;
+            SelectedAb = obj as Ab;
         }
+
 
         private void Delete(object obj)
         {

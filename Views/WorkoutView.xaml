@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Workout_Application_Tracker"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="Workout Programs" Height="500" Width="1025">
+        Title="Workout Programs" Height="600" Width="1025">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="388*"/>
@@ -15,11 +15,15 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <ListView ItemsSource="{Binding LstWorkoutTable}" SelectedItem="{Binding SelectedWorkout}" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+        <ListView 
+            ItemsSource="{Binding LstWorkoutTable}" 
+            SelectedItem="{Binding SelectedWorkout}" 
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Header="Workout 1" Width="100" DisplayMemberBinding="{Binding UpperBody1}"/>
+                        <GridViewColumn Header="Workout 1" Width="100"   DisplayMemberBinding="{Binding UpperBody1}"/>
                         <GridViewColumn Header="Sets / Reps" Width="100" DisplayMemberBinding="{Binding Sets___Reps1}"/>
                         <GridViewColumn Header="Weight (lbs)" Width="80" DisplayMemberBinding="{Binding Weight1}"/>
                         <GridViewColumn Header="Workout 2" Width="100" DisplayMemberBinding="{Binding LowerBody1}"/>
@@ -85,6 +89,7 @@
                             Grid.Row="0"
                             Grid.Column="1"
                             ItemsSource="{Binding UpperBodyCollection,Mode=OneTime}"
+                            SelectedItem="{Binding SelectedWorkout.UpperBodyID}"
                             HorizontalContentAlignment="Center"
                             Margin="3"
                             DisplayMemberPath="UpperBody1"/>
@@ -152,53 +157,59 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-
-                        <Label Grid.Row="0" Grid.Column="0" Content="Workout 1"/>
+                        
+                        <!--UpperBody label, comboBox, textblock, sets/reps & weight-->
+                        <Label Grid.Row="0" Grid.Column="0" Content="Upper Body"/>
                         <ComboBox 
                             Grid.Row="0"
-                            Grid.Column="1"
+                            Grid.Column="0"
                             HorizontalContentAlignment="Center"
+                            HorizontalAlignment="Right"
+                            Width="100"
                             Margin="3"
-                            Text="{Binding SelectedWorkout.UpperBody1,Mode=TwoWay}"
                             ItemsSource="{Binding UpperBodyCollection}"
-                            SelectedItem="{Binding SelectedWorkout.UpperBody1,Mode=TwoWay}"
+                            SelectedItem="{Binding SelectedUpperBody}"
                             DisplayMemberPath="UpperBody1"
-                            SelectedValuePath="UpperBodyID"/>
-
+                            />
+                        <TextBlock x:Name="SelectedWorkout_UpperBodyID" Grid.Row="0" Grid.Column="1" Margin="3" Text="{Binding SelectedCategoryText}"/>
                         <Label Grid.Row="1" Grid.Column="0" Content="Sets / Reps"/>
                         <TextBox Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding SelectedWorkout.Sets___Reps1}"/>
-
                         <Label Grid.Row="2" Grid.Column="0" Content="Weight (lbs)"/>
                         <TextBox Grid.Row="2" Grid.Column="1" Margin="3" Text="{Binding SelectedWorkout.Weight1}"/>
 
-                        <Label Grid.Row="3" Grid.Column="0" Content="Workout 2"/>
+                        <!--LowerBody label, comboBox, textblock, sets/reps & weight-->
+                        <Label Grid.Row="3" Grid.Column="0" Content="Lower Body"/>
                         <ComboBox 
                             Grid.Row="3"
-                            Grid.Column="1"
-                            Text="{Binding SelectedWorkout.LowerBody1,Mode=TwoWay}"
-                            ItemsSource="{Binding LowerBodyCollection}"
-                            SelectedItem="{Binding SelectedWorkout.LowerBody1,Mode=TwoWay}"
+                            Grid.Column="0"
                             HorizontalContentAlignment="Center"
-                            Margin="3"
-                            DisplayMemberPath="LowerBody1"/>
-                        
+                            HorizontalAlignment="Right"
+                            Width="100"
+                            Margin="3"                          
+                            ItemsSource="{Binding LowerBodyCollection}"
+                            SelectedItem="{Binding SelectedLowerBody}"
+                            DisplayMemberPath="LowerBody1"
+                            />
+                        <TextBlock x:Name="SelectedWorkout_LowerBodyID" Grid.Row="3" Grid.Column="1" Margin="3" Text="{Binding SelectedCategoryText1}"/>
                         <Label Grid.Row="4" Grid.Column="0" Content="Sets / Reps"/>
                         <TextBox Grid.Row="4" Grid.Column="1" Margin="3" Text="{Binding SelectedWorkout.Sets___Reps2}"/>
 
                         <Label Grid.Row="5" Grid.Column="0" Content="Weight (lbs)"/>
                         <TextBox Grid.Row="5" Grid.Column="1" Margin="3" Text="{Binding SelectedWorkout.Weight2}"/>
 
-                        <Label Grid.Row="6" Grid.Column="0" Content="Workout 3"/>
+                        <!--Abs label, comboBox, textblock, sets/reps & weight-->
+                        <Label Grid.Row="6" Grid.Column="0" Content="Abs"/>
                         <ComboBox 
                             Grid.Row="6"
-                            Grid.Column="1"
-                            Text="{Binding SelectedWorkout.Abs,Mode=TwoWay}"
-                            ItemsSource="{Binding AbCollection}"
-                            SelectedItem="{Binding SelectedWorkout.Abs,Mode=TwoWay}"
+                            Grid.Column="0"
+                            HorizontalAlignment="Right"
                             HorizontalContentAlignment="Center"
-                            Margin="3"
+                            Width="100"
+                            Margin="3" 
+                            ItemsSource="{Binding AbCollection}"
+                            SelectedItem="{Binding SelectedAb}"
                             DisplayMemberPath="Abs"/>
-
+                        <TextBlock x:Name="SelectedWorkout_AbsID" Grid.Row="6" Grid.Column="1" Margin="3" Text="{Binding SelectedCategoryText2}"/>
                         <Label Grid.Row="7" Grid.Column="0" Content="Sets / Reps"/>
                         <TextBox Grid.Row="7" Grid.Column="1" Margin="3" Text="{Binding SelectedWorkout.Sets___Reps_3}"/>
 
