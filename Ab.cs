@@ -11,40 +11,19 @@ namespace Workout_Application_Tracker
 {
     using System;
     using System.Collections.Generic;
-    using System.Collections.Specialized;
-    using System.ComponentModel;
-    using System.Runtime.CompilerServices;
-
-    public partial class Ab : INotifyPropertyChanged
+    
+    public partial class Ab
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Ab()
         {
             this.WorkoutTables = new HashSet<WorkoutTable>();
         }
-
-        private decimal absID;
-        private string _abs;
-        public decimal AbsID { get => absID; set {
-                absID = value;
-                OnPropertyChanged(nameof(AbsID));
-            }
-        }
-        public string Abs { get => _abs; set {
-                _abs = value;
-                OnPropertyChanged(nameof(Abs));
-            }
-        }
+    
+        public decimal AbsID { get; set; }
+        public string Abs { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WorkoutTable> WorkoutTables { get; set; }
-
-       
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

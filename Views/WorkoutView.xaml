@@ -17,12 +17,13 @@
         </Grid.RowDefinitions>
         <ListView 
             ItemsSource="{Binding LstWorkoutTable}" 
-            SelectedItem="{Binding SelectedWorkout}" 
+            SelectedItem="{Binding SelectedWorkout}"
             Grid.ColumnSpan="2"
+            HorizontalContentAlignment="Center"
             HorizontalAlignment="Center">
             <ListView.View>
                 <GridView>
-                    <GridView.Columns>
+
                         <GridViewColumn Header="Workout 1" Width="100"   DisplayMemberBinding="{Binding UpperBody1}"/>
                         <GridViewColumn Header="Sets / Reps" Width="100" DisplayMemberBinding="{Binding Sets___Reps1}"/>
                         <GridViewColumn Header="Weight (lbs)" Width="80" DisplayMemberBinding="{Binding Weight1}"/>
@@ -52,7 +53,7 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                    </GridView.Columns>
+
                 </GridView>
             </ListView.View>
         </ListView>
@@ -171,7 +172,7 @@
                             SelectedItem="{Binding SelectedUpperBody}"
                             DisplayMemberPath="UpperBody1"
                             />
-                        <TextBlock x:Name="SelectedWorkout_UpperBodyID" Grid.Row="0" Grid.Column="1" Margin="3" Text="{Binding SelectedCategoryText}"/>
+                        <TextBlock x:Name="SelectedCategoryText" Grid.Row="0" Grid.Column="1" Margin="3" Text="{Binding SelectedCategoryText}"/>
                         <Label Grid.Row="1" Grid.Column="0" Content="Sets / Reps"/>
                         <TextBox Grid.Row="1" Grid.Column="1" Margin="3" Text="{Binding SelectedWorkout.Sets___Reps1}"/>
                         <Label Grid.Row="2" Grid.Column="0" Content="Weight (lbs)"/>

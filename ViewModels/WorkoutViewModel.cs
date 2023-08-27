@@ -48,6 +48,7 @@ namespace Workout_Application_Tracker.ViewModels
                 OnPropertyChanged(nameof(LstWorkoutTable));
             }
         }
+
         private WorkoutTable _selectedWorkout;
         public WorkoutTable SelectedWorkout
         {
@@ -125,7 +126,6 @@ namespace Workout_Application_Tracker.ViewModels
             if (SelectedUpperBody != null)
             {
                 SelectedCategoryText = SelectedUpperBody.UpperBody1;
-                SelectedWorkout.UpperBody1 = SelectedCategoryText;
             }
             else
             {
@@ -211,7 +211,6 @@ namespace Workout_Application_Tracker.ViewModels
         }
 
 
-        public ObservableCollection<UpperBody> Categories { get; set; }
 
         FitnessDBEntities fitnessDBEntities;
         public WorkoutViewModel()
@@ -225,15 +224,6 @@ namespace Workout_Application_Tracker.ViewModels
             UpdateCommand = new Command((s) => true, Update);
             UpdateWorkoutCommand = new Command((s) => true, UpdateWorkout);
 
-
-            Categories = new ObservableCollection<UpperBody>
-            {
-                new UpperBody { UpperBody1 = "Bench Press" },
-                new UpperBody { UpperBody1 = "Bicept Curl" },
-                new UpperBody { UpperBody1 = "Tricept Press Down" },
-                new UpperBody { UpperBody1 = "Shoulder Press" },
-                new UpperBody { UpperBody1 = "Forearm Curl" }
-            };
         }
 
         
@@ -265,6 +255,26 @@ namespace Workout_Application_Tracker.ViewModels
         }
 
 
+        private void Add(object obj)
+        {
+            // Create a new WorkoutTable item
+            var newWorkout = new WorkoutTable
+            {
+                // Initialize properties based on the ViewModel or user input
+                UpperBodyID = SelectedUpperBody?.UpperBodyID,
+                Sets___Reps1 = SelectedWorkout?.Sets___Reps1,
+                Weight1 = SelectedWorkout.Weight1,
+                // Initialize other properties as needed
+            };
+
+            // Add the new item to the database and the local collection
+            fitnessDBEntities.WorkoutTables.Add(newWorkout);
+            LstWorkoutTable.Add(newWorkout);
+
+            // Save changes to the database
+            fitnessDBEntities.SaveChanges();
+        }
+
         private void Delete(object obj)
         {
             var workout = obj as WorkoutTable;
@@ -282,7 +292,7 @@ namespace Workout_Application_Tracker.ViewModels
         public ICommand UpdateWorkoutCommand { get; set; }
     }
 
-    internal class Command : ICommand
+    class Command : ICommand
     {
         public Command(Func<object, bool> methodCanExecute, Action<object> methodExecute)
         {
@@ -305,3 +315,4 @@ namespace Workout_Application_Tracker.ViewModels
         }
     }
 }
+
